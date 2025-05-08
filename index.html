@@ -141,7 +141,21 @@
     from { opacity: 0; transform: translate(-50%, -60%); }
     to { opacity: 1; transform: translate(-50%, -50%); }
   }
-</style></head>
+</style>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const utms = {};
+  for (const [key, value] of params.entries()) {
+    if (key.startsWith('utm')) {
+      utms[key] = value;
+    }
+  }
+  if (Object.keys(utms).length > 0) {
+    localStorage.setItem('utm_lead', JSON.stringify(utms));
+  }
+</script>
+</head>
 
 
   
